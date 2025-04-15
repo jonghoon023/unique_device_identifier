@@ -16,8 +16,7 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('getUniqueIdentifier test', (WidgetTester tester) async {
-    final UniqueDeviceIdentifier plugin = UniqueDeviceIdentifier();
-    final String? version = await plugin.getUniqueIdentifier();
+    final String? version = await UniqueDeviceIdentifier.getUniqueIdentifier();
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
     expect(version?.isNotEmpty, true);

@@ -20,11 +20,10 @@ void main() {
   });
 
   test('getUniqueIdentifier', () async {
-    UniqueDeviceIdentifier uniqueDeviceIdentifierPlugin = UniqueDeviceIdentifier();
     MockUniqueDeviceIdentifierPlatform fakePlatform = MockUniqueDeviceIdentifierPlatform();
     UniqueDeviceIdentifierPlatform.instance = fakePlatform;
 
-    final uniqueIdentifier = await uniqueDeviceIdentifierPlugin.getUniqueIdentifier();
+    final uniqueIdentifier = await UniqueDeviceIdentifier.getUniqueIdentifier();
     expect(uniqueIdentifier?.isNotEmpty, true);
   });
 }

@@ -17,7 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _uniqueIdentifier = 'Unknown';
-  final _uniqueDeviceIdentifierPlugin = UniqueDeviceIdentifier();
 
   @override
   void initState() {
@@ -31,8 +30,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      uniqueIdentifier =
-          await _uniqueDeviceIdentifierPlugin.getUniqueIdentifier() ?? 'Unknown unique identifier';
+      uniqueIdentifier = await UniqueDeviceIdentifier.getUniqueIdentifier() ?? 'Unknown unique identifier';
     } on PlatformException {
       uniqueIdentifier = 'Failed to get unique identifier.';
     }
