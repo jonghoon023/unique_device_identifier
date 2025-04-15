@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0
+
+- **Breaking Change**: `getUniqueIdentifier()` has been converted to a `static` method.
+  - You can now call it directly without creating an instance:
+    ```dart
+    final deviceId = await UniqueDeviceIdentifier.getUniqueIdentifier();
+    ```
+  - This change simplifies usage but **breaks compatibility** with the previous instance-based approach:
+    ```dart
+    // ❌ This will no longer work:
+    final deviceId = await UniqueDeviceIdentifier().getUniqueIdentifier();
+    ```
+
 ## 1.0.0
 
 - Initial release of the `unique_device_identifier` Flutter plugin.

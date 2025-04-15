@@ -1,6 +1,6 @@
 name: unique_device_identifier
 description: "A Flutter plugin that provides a unique device identifier on all platforms including Android, iOS, Windows, macOS, Linux, Web."
-version: 1.0.0
+version: 2.0.0
 
 homepage: https://github.com/jonghoon023/unique_device_identifier
 repository: https://github.com/jonghoon023/unique_device_identifier
