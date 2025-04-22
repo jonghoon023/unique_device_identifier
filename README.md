@@ -14,9 +14,10 @@ A Flutter plugin that provides a unique device identifier on all platforms inclu
 - 🐧 Linux: Reads `/etc/machine-id`
 - 🪟 Windows: Reads registry value `MachineGuid`
 - 🌐 Web:
-  - Attempts to generate a fingerprint-based hash from browser characteristics
+  - First attempts to read a stored UUID from `localStorage`
+  - If not found, generates a fingerprint-based hash from browser characteristics
   - Falls back to a random UUID if fingerprinting fails
-  - Stores the identifier in `localStorage`
+  - Stores the newly generated UUID in `localStorage` for future use
 
 ---
 
@@ -26,7 +27,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  unique_device_identifier: ^2.0.0
+  unique_device_identifier: ^1.0.0
 ```
 
 ---
@@ -37,8 +38,10 @@ dependencies:
 import 'package:unique_device_identifier/unique_device_identifier.dart';
 
 void main() async {
-  final deviceId = await UniqueDeviceIdentifier.getUniqueIdentifier();
-  print("Device ID: $deviceId");
+  final id = await UniqueDeviceIdentifier.getUniqueIdentifier();
+  final safeId = await UniqueDeviceIdentifier.getSafeUniqueIdentifier();
+  print("Raw: $id");
+  print("Safe: $safeId");
 }
 ```
 
@@ -53,7 +56,7 @@ void main() async {
 | macOS    | `IOPlatformUUID` (via IOKit with macOS version fallback) |
 | Linux    | `/etc/machine-id` |
 | Windows  | Registry `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\MachineGuid` |
-| Web      | `localStorage` with fingerprint fallback |
+| Web      | Checks `localStorage` first, then generates fingerprint hash or random UUID |
 
 ---
 

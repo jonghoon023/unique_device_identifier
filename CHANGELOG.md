@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.1
+
+- Added detailed doc comments to `getUniqueIdentifier()` to describe platform-specific behavior.
+- No code changes; this is a documentation-only update.
+
 ## 2.0.0
 
 - **Breaking Change**: `getUniqueIdentifier()` has been converted to a `static` method.
