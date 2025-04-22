@@ -27,7 +27,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  unique_device_identifier: ^1.0.0
+  unique_device_identifier: ^2.0.2
 ```
 
 ---
