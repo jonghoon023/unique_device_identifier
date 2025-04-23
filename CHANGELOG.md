@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.3
+
+- Fixed incorrect usage example in documentation.
+
 ## 2.0.2
 
 - Fixed version example in `README.md` to match the latest release.

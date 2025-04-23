@@ -27,7 +27,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  unique_device_identifier: ^2.0.2
+  unique_device_identifier: ^2.0.3
 ```
 
 ---
@@ -38,10 +38,8 @@ dependencies:
 import 'package:unique_device_identifier/unique_device_identifier.dart';
 
 void main() async {
-  final id = await UniqueDeviceIdentifier.getUniqueIdentifier();
-  final safeId = await UniqueDeviceIdentifier.getSafeUniqueIdentifier();
-  print("Raw: $id");
-  print("Safe: $safeId");
+  final String? deviceId = await UniqueDeviceIdentifier.getUniqueIdentifier();
+  print("Device ID: $deviceId");
 }
 ```
 
