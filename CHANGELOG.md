@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.4
+
+- Fixed a bug on the Web platform where all devices were generating the same UUID (`00000000-0000-4000-8000-000000000000`)
+- Implemented Web-specific UUID generation: attempts to generate a UUID using a browser fingerprint; if that fails, falls back to a randomly generated UUID using Dart
+- The randomly generated UUID is stored in `window.localStorage` and reused across page reloads and browser sessions
+
 ## 2.0.3
 
 - Fixed incorrect usage example in documentation.

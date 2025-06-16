@@ -14,10 +14,11 @@ A Flutter plugin that provides a unique device identifier on all platforms inclu
 - 🐧 Linux: Reads `/etc/machine-id`
 - 🪟 Windows: Reads registry value `MachineGuid`
 - 🌐 Web:
-  - First attempts to read a stored UUID from `localStorage`
-  - If not found, generates a fingerprint-based hash from browser characteristics
-  - Falls back to a random UUID if fingerprinting fails
-  - Stores the newly generated UUID in `localStorage` for future use
+  - Attempts to read a UUID from `window.localStorage`
+  - If the value is missing or invalid, it tries to generate one based on browser fingerprint
+  - If fingerprinting fails, generates a new UUID using Dart code (`generateUUID`)
+  - The newly generated UUID is stored in `localStorage` for future reuse
+  - Ensures the same UUID persists across reloads and sessions
 
 ---
 
@@ -27,7 +28,7 @@ Add the dependency to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  unique_device_identifier: ^2.0.3
+  unique_device_identifier: ^2.0.4
 ```
 
 ---
@@ -54,16 +55,15 @@ void main() async {
 | macOS    | `IOPlatformUUID` (via IOKit with macOS version fallback) |
 | Linux    | `/etc/machine-id` |
 | Windows  | Registry `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\MachineGuid` |
-| Web      | Checks `localStorage` first, then generates fingerprint hash or random UUID |
+| Web      | Attempts to read a UUID from localStorage. If not found or invalid, it tries to generate one using a browser fingerprint. If that fails, it generates a new UUID using crypto.randomUUID. The newly generated UUID is then stored in localStorage for future reuse. |
 
 ---
 
 ## 🔒 Notes
 
 - On **iOS and Android**, the UUID may change after uninstalling and reinstalling the app.
-- On **Web**, UUID is stored in `localStorage` and may be cleared manually by the user.
 - macOS implementation avoids deprecated APIs on macOS 12+.
-- No external packages (like `uuid` or `device_info_plus`) are used.
+- On **Web**, the UUID is first read from `localStorage`. If it is missing or invalid, the plugin attempts to generate one using a browser fingerprint. If that fails, it falls back to a randomly generated UUID using Dart code. The final UUID is then stored in `localStorage` for future reuse and can be manually cleared by the user through the browser's storage settings.
 
 ---
 
