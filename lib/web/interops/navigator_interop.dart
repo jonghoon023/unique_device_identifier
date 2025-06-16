@@ -13,4 +13,5 @@ extension NavigatorExtension on Navigator {
   external String get platform;
   external int get hardwareConcurrency;
   external int get maxTouchPoints;
+  external JSAny? get deviceMemory;
 }

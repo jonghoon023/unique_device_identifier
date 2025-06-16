@@ -5,7 +5,7 @@ import 'window_interop.dart';
 
 String generateUUID() {
   final bytes = Uint8List(16);
-  window.crypto.getRandomValues(bytes.jsify() as JSObject);
+  window.crypto.getRandomValues(bytes.toJS);
 
   // RFC 4122 version 4 UUID bits
   bytes[6] = (bytes[6] & 0x0f) | 0x40;
