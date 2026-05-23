@@ -1,6 +1,6 @@
 name: unique_device_identifier
 description: "A Flutter plugin that provides a unique device identifier on all platforms including Android, iOS, Windows, macOS, Linux, Web."
-version: 2.0.4
+version: 2.0.5
 
 homepage: https://github.com/jonghoon023/unique_device_identifier
 repository: https://github.com/jonghoon023/unique_device_identifier
@@ -8,20 +8,20 @@ issue_tracker: https://github.com/jonghoon023/unique_device_identifier/issues
 
 environment:
   sdk: ^3.7.2
-  flutter: '>=3.3.0'
+  flutter: '>=3.24.0'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  web: ^1.0.0
-  plugin_platform_interface: ^2.0.2
+  web: ^1.1.1
+  plugin_platform_interface: ^2.1.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   plugin:
