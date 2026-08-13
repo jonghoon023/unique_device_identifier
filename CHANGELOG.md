@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 - Updates minimum supported SDK version to Flutter 3.44/Dart 3.12.
 - Migrates to built-in Kotlin
 
+> **Thanks to @mytrin for their contribution.**
+
 ## 2.0.4
 
 - Fixed a bug on the Web platform where all devices were generating the same UUID (`00000000-0000-4000-8000-000000000000`)
